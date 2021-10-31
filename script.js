@@ -9,6 +9,14 @@ var blockedIcon = L.icon({
     iconAnchor: [50, 100]
 });
 
+/*
+var border = L.icon({
+    iconUrl: './Icons/border.png',
+    iconSize: [700, 500],
+    iconAnchor: [0, 0]
+});
+*/
+
 var ICONS = [blockedIcon]
 
 let mapOptions = {
@@ -18,7 +26,10 @@ let mapOptions = {
 
 var map = new L.map('map', mapOptions);
 
-let layer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+//L.marker([32.85942, 35.25721], {icon: border, interactive: false}).addTo(map);
+L.imageOverlay('./Icons/border.png', [[32.85942, 35.25726], [32.85679, 35.26148]]).addTo(map);
+
+let layer = new L.TileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
 map.addLayer(layer);
 
 function addExit(num, name, coords, state) // 0 = blocked
@@ -35,13 +46,13 @@ function initMap()
 }
 
 addExit(1, "שער הסעות",
-[32.85769, 35.26105], 0);
+[32.85765, 35.26117], 0);
 
-addExit(2, "שער ספרייה",
+addExit(2, "שער כללית",
 [32.85813, 35.26036], 0);
 
 addExit(3, 'שער י"ב',
-[32.85852, 35.25739], 0);
+[32.85844, 35.25739], 0);
 
 
 initMap();
