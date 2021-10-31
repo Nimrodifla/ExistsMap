@@ -9,14 +9,6 @@ var blockedIcon = L.icon({
     iconAnchor: [50, 100]
 });
 
-/*
-var border = L.icon({
-    iconUrl: './Icons/border.png',
-    iconSize: [700, 500],
-    iconAnchor: [0, 0]
-});
-*/
-
 var ICONS = [blockedIcon]
 
 let mapOptions = {
@@ -26,7 +18,6 @@ let mapOptions = {
 
 var map = new L.map('map', mapOptions);
 
-//L.marker([32.85942, 35.25721], {icon: border, interactive: false}).addTo(map);
 L.imageOverlay('./Icons/border.png', [[32.85942, 35.25726], [32.85679, 35.26148]]).addTo(map);
 
 let layer = new L.TileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
