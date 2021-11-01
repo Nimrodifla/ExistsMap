@@ -1,3 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Suez+One&display=swap');
+
+body {
+    margin: 0 10px;
+}
 
 #map {
     width: 100%;
@@ -6,18 +11,31 @@
 
 .UI {
     height: 20%;
+    
 }
 
 .dropdown {
-    width: 49%;
+    width: 45%;
     font-size: 200%;
     padding: 20px;
+    border-style: solid;
+    border-width: 3px;
+    border-color: black;
+    border-radius: 20px;
+    font-family: 'Suez One', serif;
+    margin: 10px;
 }
 
 .submit {
-    width: 100%;
+    width: 99%;
     height: 10%;
     font-size: 400%;
+    border-style: solid;
+    border-width: 3px;
+    border-color: black;
+    border-radius: 20px;
+    font-family: 'Suez One', serif;
+    background-color: DarkSeaGreen;
 }
 
 .tinyImg {

@@ -4,29 +4,31 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <link rel="stylesheet" href="./style.css"/>
-    <title>map</title>
+    <title>ExitsMap</title>
 </head>
-<body>
+<body><center>
 
     <div id="map"></div>
 
+    <br>
+
     <div class="UI">
         <select id="exitsDrop" class="dropdown">
-            <option value="0">Select Gate</option>
+            <option value="0">- בחר שער -</option>
         </select>
 
         <select id="statesDrop" class="dropdown">
-            <option value="-1">Select Condition</option>
-            <option value="0">Blocked</option>
-            <option value="1">Open</option>
+            <option value="-1">- בחר מצב -</option>
+            <option value="0">סגור</option>
+            <option value="1">פתוח</option>
         </select>
 
-        <br>
+        <br><br>
 
-        <button class="submit" onclick="submitVote()">SUBMIT</button>
+        <button class="submit" onclick="submitVote()">בצע דיווח</button>
     </div>
 
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script src="./script.js"></script>
-</body>
+</center></body>
 </html>
