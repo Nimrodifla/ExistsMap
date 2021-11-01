@@ -24,6 +24,7 @@ body {
     border-radius: 20px;
     font-family: 'Suez One', serif;
     margin: 10px;
+    color: black;
 }
 
 .submit {
@@ -36,6 +37,7 @@ body {
     border-radius: 20px;
     font-family: 'Suez One', serif;
     background-color: DarkSeaGreen;
+    color: black;
 }
 
 .tinyImg {
