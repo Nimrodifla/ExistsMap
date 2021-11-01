@@ -1,5 +1,41 @@
 var EXITS = {}
 
+function clearExits()
+{
+    EXITS = {};
+}
+
+function httpGetAsync(theUrl, callback)
+{
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.onreadystatechange = function() { 
+        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+            callback(xmlHttp.response);
+    }
+    xmlHttp.open("GET", theUrl, true); // true for asynchronous 
+    xmlHttp.send(null);
+}
+
+function updateExitsCallback(exits)
+{
+    clearExits();
+
+    let json = JSON.parse(exits);
+    for (let i = 0; i < json.length; i++)
+    {
+        let obj = json[i];
+        addExit(obj['id'], obj['name'], [obj['coordx'], obj['coordy']], obj['state']);
+    }
+
+    initMap();
+
+    //console.log(json);
+}
+
+function updateExits()
+{
+    httpGetAsync("/exits", updateExitsCallback);
+}
 
 // define icons
 
@@ -36,6 +72,7 @@ function initMap()
     }
 }
 
+/*
 addExit(1, "שער הסעות",
 [32.85765, 35.26117], 0);
 
@@ -44,6 +81,6 @@ addExit(2, "שער כללית",
 
 addExit(3, 'שער י"ב',
 [32.85844, 35.25739], 0);
+*/
 
-
-initMap();
+updateExits();

@@ -1,5 +1,15 @@
 let express = require("express");
+var mysql = require('mysql');
 var app = express();
+
+const db = mysql.createPool({
+        
+    host: "eu-cdbr-west-01.cleardb.com",
+    user: "b180ad423bf4f9",
+    password: "91d13188",
+    database: "heroku_53994a8cea6a400"
+
+});
 
 app.get('/', (req, res)=>{
     res.sendFile(__dirname + '/index.html');
@@ -16,9 +26,18 @@ app.get('/script.js', (req, res)=>{
 app.get('/Icons/:file', (req, res)=>{
     let file = req.params.file;
     res.sendFile(__dirname + '/Icons/' + file);
-})
+});
 
-app.listen(process.env.PORT, (err)=>{
+app.get('/exits', (req, res)=>{
+    db.query("SELECT * FROM heroku_53994a8cea6a400.exits; ", (err, result)=>{
+        if (err)
+            throw err
+        
+        res.send(result);
+    })
+});
+
+app.listen(process.env.PORT | 80, (err)=>{
     if (err)
         throw err;
 
