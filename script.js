@@ -74,9 +74,9 @@ function initMap()
 
 updateExits();
 
-navigator.permissions.query({name:'geolocation'});
+//navigator.permissions.query({name:'geolocation'});
 
-map.locate({setView: false, watch: true}) /* This will return map so you can do chaining */
+map.locate({watch: true, enableHighAccuracy: true}) /* This will return map so you can do chaining */
         .on('locationfound', function(e){
             L.marker([e.latitude, e.longitude]).addTo(map);
         })
