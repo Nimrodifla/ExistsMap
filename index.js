@@ -37,7 +37,7 @@ app.get('/exits', (req, res)=>{
     })
 });
 
-app.listen(process.env.PORT | 80, (err)=>{
+app.listen(process.env.PORT || 80, (err)=>{
     if (err)
         throw err;
 
