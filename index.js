@@ -37,6 +37,23 @@ app.get('/exits', (req, res)=>{
     })
 });
 
+app.get('/submition/:id/:state', (req, res)=>{
+    let id = req.params.id;
+    let state = req.params.state;
+
+    if (state == 1 || state == 0)
+    {
+        db.query("UPDATE `heroku_53994a8cea6a400`.`exits` SET `state` = '" + state + "' WHERE (`id` = '" + id + "');", (err, result)=>{
+            if (err)
+                throw err;
+            
+            res.send("200");
+        });
+    }
+
+    res.send("404");
+});
+
 app.listen(process.env.PORT || 80, (err)=>{
     if (err)
         throw err;

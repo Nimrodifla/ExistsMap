@@ -16,3 +16,8 @@
     width: 100%;
     height: 10%;
 }
+
+.tinyImg {
+    width: 10px;
+    height: 10px;
+}

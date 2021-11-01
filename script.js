@@ -5,6 +5,31 @@ function clearExits()
     EXITS = {};
 }
 
+function voteSubmitted(res)
+{
+    if (res == "200")
+        alert("Submitted!");
+    else
+        alert("There was an error...");
+}
+
+function submitVote()
+{
+    let gatesDropdown = document.getElementById('exitsDrop').value;
+    let statesDropdown = document.getElementById('statesDrop').value;
+
+    if (gatesDropdown != 0 && statesDropdown != -1)
+    {
+        httpGetAsync("/submition/" + gatesDropdown + "/" + statesDropdown, voteSubmitted);
+    }
+}
+
+function addExitToDropdown(id)
+{
+    let dropdown = document.getElementById('exitsDrop');
+    dropdown.innerHTML += '<option value="' + id + '">' + EXITS[id].name + '</option>\n';
+}
+
 function startLocatingUser()
 {
     map.locate({watch: true, enableHighAccuracy: true}) /* This will return map so you can do chaining */
@@ -37,10 +62,11 @@ function updateExitsCallback(exits)
     {
         let obj = json[i];
         addExit(obj['id'], obj['name'], [obj['coordx'], obj['coordy']], obj['state']);
+        addExitToDropdown(obj['id']);
     }
 
     initMap();
-    startLocatingUser();
+    //startLocatingUser();
 
     //console.log(json);
 }
@@ -51,14 +77,21 @@ function updateExits()
 }
 
 // define icons
+const ICON_SIDE = 100;
 
 var blockedIcon = L.icon({
     iconUrl: './Icons/blocked.gif',
-    iconSize: [100, 100],
-    iconAnchor: [50, 100]
+    iconSize: [ICON_SIDE, ICON_SIDE],
+    iconAnchor: [ICON_SIDE / 2, ICON_SIDE]
 });
 
-var ICONS = [blockedIcon]
+var openIcon = L.icon({
+    iconUrl: './Icons/open.png',
+    iconSize: [ICON_SIDE, ICON_SIDE],
+    iconAnchor: [ICON_SIDE / 2, ICON_SIDE]
+});
+
+var ICONS = [blockedIcon, openIcon];
 
 let mapOptions = {
     center:[32.85857, 35.25957],
