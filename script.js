@@ -72,15 +72,9 @@ function initMap()
     }
 }
 
-/*
-addExit(1, "שער הסעות",
-[32.85765, 35.26117], 0);
-
-addExit(2, "שער כללית",
-[32.85813, 35.26036], 0);
-
-addExit(3, 'שער י"ב',
-[32.85844, 35.25739], 0);
-*/
-
 updateExits();
+
+map.locate({setView: false, watch: true}) /* This will return map so you can do chaining */
+        .on('locationfound', function(e){
+            L.marker([e.latitude, e.longitude]).addTo(map);
+        });
