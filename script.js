@@ -77,4 +77,8 @@ updateExits();
 map.locate({setView: false, watch: true}) /* This will return map so you can do chaining */
         .on('locationfound', function(e){
             L.marker([e.latitude, e.longitude]).addTo(map);
+        })
+        .on('locationerror', function(e){
+            console.log(e);
+            alert("Location access denied.");
         });
