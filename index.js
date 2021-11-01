@@ -50,8 +50,6 @@ app.get('/submition/:id/:state', (req, res)=>{
             res.send("200");
         });
     }
-
-    res.send("404");
 });
 
 app.listen(process.env.PORT || 80, (err)=>{

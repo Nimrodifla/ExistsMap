@@ -7,8 +7,12 @@ function clearExits()
 
 function voteSubmitted(res)
 {
+    console.log(res);
     if (res == "200")
+    {
         alert("Submitted!");
+        location.reload();
+    }
     else
         alert("There was an error...");
 }
@@ -94,7 +98,7 @@ var openIcon = L.icon({
 var ICONS = [blockedIcon, openIcon];
 
 let mapOptions = {
-    center:[32.85857, 35.25957],
+    center:[32.85805, 35.25939],
     zoom:20
 }
 
@@ -105,7 +109,7 @@ L.imageOverlay('./Icons/border.png', [[32.85942, 35.25726], [32.85679, 35.26148]
 let layer = new L.TileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
 map.addLayer(layer);
 
-function addExit(num, name, coords, state) // 0 = blocked
+function addExit(num, name, coords, state) // 0 = blocked, 1 = open
 {
     EXITS[num] = {name: name, pos: coords, state: state};
 }
