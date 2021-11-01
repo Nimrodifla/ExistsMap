@@ -5,6 +5,18 @@ function clearExits()
     EXITS = {};
 }
 
+function startLocatingUser()
+{
+    map.locate({watch: true, enableHighAccuracy: true}) /* This will return map so you can do chaining */
+        .on('locationfound', function(e){
+            L.marker([e.latitude, e.longitude]).addTo(map);
+        })
+        .on('locationerror', function(e){
+            console.log(e);
+            alert("Location access denied.");
+        });
+}
+
 function httpGetAsync(theUrl, callback)
 {
     var xmlHttp = new XMLHttpRequest();
@@ -28,6 +40,7 @@ function updateExitsCallback(exits)
     }
 
     initMap();
+    startLocatingUser();
 
     //console.log(json);
 }
@@ -75,12 +88,3 @@ function initMap()
 updateExits();
 
 //navigator.permissions.query({name:'geolocation'});
-
-map.locate({watch: true, enableHighAccuracy: true}) /* This will return map so you can do chaining */
-        .on('locationfound', function(e){
-            L.marker([e.latitude, e.longitude]).addTo(map);
-        })
-        .on('locationerror', function(e){
-            console.log(e);
-            alert("Location access denied.");
-        });
