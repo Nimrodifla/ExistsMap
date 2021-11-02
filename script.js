@@ -95,7 +95,14 @@ var openIcon = L.icon({
     iconAnchor: [ICON_SIDE / 2, ICON_SIDE]
 });
 
-var ICONS = [blockedIcon, openIcon];
+var unknownIcon = L.icon({
+    iconUrl: './Icons/unknown.png',
+    iconSize: [ICON_SIDE, ICON_SIDE],
+    iconAnchor: [ICON_SIDE / 2, ICON_SIDE]
+});
+
+
+var ICONS = [blockedIcon, openIcon, unknownIcon];
 
 let mapOptions = {
     center:[32.85805, 35.25939],
